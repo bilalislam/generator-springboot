@@ -20,11 +20,9 @@ extra:
   manifest: "manifest.webmanifest"
   social:
     - icon: fontawesome/brands/github-alt
-      link: "https://github.com/sivaprasadreddy"
-    - icon: fontawesome/brands/twitter
-      link: "https://twitter.com/sivalabs"
+      link: "https://github.com/bilalislam"
     - icon: fontawesome/brands/linkedin
-      link: "https://www.linkedin.com/in/siva-prasad-reddy-katamreddy/"
+      link: "https://www.linkedin.com/in/bilalislam/"
 
 # Extensions
 markdown_extensions:
