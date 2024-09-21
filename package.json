@@ -1,0 +1,45 @@
+{
+  "name": "generator-springboot",
+  "version": "0.1.5",
+  "description": "A Yeoman generator for generating SpringBoot microservices",
+  "keywords": [
+    "yeoman-generator",
+    "java",
+    "spring",
+    "spring-boot",
+    "microservice"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bilalislam/generator-springboot"
+  },
+  "author": "K Siva Prasad Reddy <bilal.islam815@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bilalislam/generator-springboot/issues"
+  },
+  "homepage": "https://github.com/bilalislam/generator-springboot",
+  "files": [
+    "generators"
+  ],
+  "main": "generators/app/index.js",
+  "scripts": {
+    "test": "npm run test:unit -- test/**/*.spec.js test/*.spec.js --no-insight",
+    "test:unit": "mocha --timeout 120000 --slow 0 --reporter spec"
+  },
+  "dependencies": {
+    "chalk": "4.1.2",
+    "lodash": "4.17.21",
+    "shelljs": "0.8.5",
+    "yeoman-environment": "3.19.3",
+    "yeoman-generator": "5.10.0"
+  },
+  "devDependencies": {
+    "chai": "4.3.10",
+    "fs-extra": "11.1.1",
+    "mocha": "10.2.0",
+    "sinon": "17.0.1",
+    "yeoman-assert": "3.1.1",
+    "yeoman-test": "6.3.0"
+  }
+}

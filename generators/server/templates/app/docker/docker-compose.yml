@@ -1,0 +1,53 @@
+version: '3.8'
+services:
+
+<%_ if (databaseType === 'postgresql') { _%>
+  postgresqldb:
+    image: <%= POSTGRESQL_IMAGE %>
+    environment:
+      - POSTGRES_USER=appuser
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=appdb
+    ports:
+      - "5432:5432"
+<%_ } _%>
+<%_ if (databaseType === 'mysql') { _%>
+  mysqldb:
+    image: <%= MYSQL_IMAGE %>
+    environment:
+      - MYSQL_DATABASE=appdb
+      - MYSQL_USER=appuser
+      - MYSQL_PASSWORD=secret
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "3306:3306"
+
+  <%_ } _%>
+<%_ if (databaseType === 'mariadb') { _%>
+  mariadb:
+    image: <%= MARIADB_IMAGE %>
+    environment:
+      - MYSQL_DATABASE=appdb
+      - MYSQL_USER=appuser
+      - MYSQL_PASSWORD=secret
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "3306:3306"
+<%_ } _%>
+
+<%_ if (features.includes('localstack')) { _%>
+  localstack:
+    image: <%= LOCALSTACK_IMAGE %>
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3,sqs
+      - DEFAULT_REGION=us-east-1
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - USE_SSL=0
+      - AWS_CBOR_DISABLE=1
+    volumes:
+      - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "../.localstack:/etc/localstack/init/ready.d"  # ready hook
+<%_ } _%>
